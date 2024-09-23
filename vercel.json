@@ -1,9 +1,18 @@
 {
-    "version": 2,
-    "builds": [
-      { "src": "db.json", "use": "@vercel/static" }
-    ],
-    "routes": [
-      { "src": "/(.*)", "dest": "/db.json" }
-    ]
-  }
+  "version": 2,
+  "builds": [
+    { "src": "db.json", "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "src": "/patients", "dest": "/db.json" },
+    { "src": "/patients/(.*)", "dest": "/db.json" },
+    { "src": "/patientCard", "dest": "/db.json" },
+    { "src": "/patientCard/(.*)", "dest": "/db.json" },
+    { "src": "/login", "dest": "/db.json" },
+    { "src": "/getAllTypesLogin", "dest": "/db.json" },
+    { "src": "/getAllFacilitiesHome", "dest": "/db.json" },
+    { "src": "/getAllPatientDemographicByIdProviderAndName", "dest": "/db.json" },
+    { "src": "/chartLiabilities", "dest": "/db.json" },
+    { "src": "/chartLos", "dest": "/db.json" }
+  ]
+}
