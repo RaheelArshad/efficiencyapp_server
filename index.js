@@ -1,18 +1,17 @@
-const jsonServer = require("json-server");
+const jsonServer = require("json-server"); // importing json-server library
 const server = jsonServer.create();
 const router = jsonServer.router("db.json");
 const middlewares = jsonServer.defaults();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8080; //  chose port from here like 8080, 3001
 
 server.use(middlewares);
-
-server.get('/patientCard', (req, res) => {
-  // Return the patientCard object
-  const db = router.db; // Get the database
-  const patientCard = db.get('patientCard').value(); // Assuming patientCard is an array
-  res.json(patientCard); // Send the patientCard data
-});
+server.use(router);
+jsonServer.rewriter({
+    "/*" : "/$1"
+})
 
 server.listen(port, () => {
-  console.log(`JSON Server is running on http://localhost:${port}`);
+    console.log('json server is running', port);
 });
+
+module.exports = server;
