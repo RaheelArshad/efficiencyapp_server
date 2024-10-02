@@ -10,11 +10,20 @@ const fs = require("fs");
 const mysql = require("mysql2");
 
 // Create a MySQL connection
+//localhost 
+// const connection = mysql.createConnection({
+//   host: 'localhost',
+//   user: 'root',
+//   password: '',
+//   database: 'efficiencyapp'
+// });
+
+//live
 const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'efficiencyapp'
+  host: 'sql.freedb.tech',
+  user: 'freedb_efficiencyapp',
+  password: 'hQ2Zm!k#8!Dvs7c',
+  database: 'freedb_efficiencyapp'
 });
 
 // Connect to MySQL
