@@ -38,14 +38,18 @@ connection.connect((err) => {
 // Use CORS middleware
 server.use(cors()); // Enable CORS for all routes
 
-// Middleware to set headers globally
+const allowedOrigins = ['http://localhost:8100', 'http://localhost:8101', 'https://efficiencyapp-server.vercel.app']; // Add other allowed origins if needed
+
 server.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*'); // Allow requests from any origin
-  res.header('Access-Control-Allow-Credentials', 'true'); // Allow cookies and credentials
-  res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS'); // Allowed methods
-  res.header('Access-Control-Allow-Headers', 'Origin, Content-Type, Authorization, Accept, X-Requested-With, x-xsrf-token'); // Allowed headers
-  res.header('Content-Type', 'application/json; charset=utf-8'); // Content type header
-  next(); // Continue to the next middleware
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  }
+  res.header('Access-Control-Allow-Credentials', 'true');
+  res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  
+  next();
 });
 
 // Set the storage for Multer
