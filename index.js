@@ -38,6 +38,16 @@ connection.connect((err) => {
 // Use CORS middleware
 server.use(cors()); // Enable CORS for all routes
 
+// Middleware to set headers globally
+server.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*'); // Allow requests from any origin
+  res.header('Access-Control-Allow-Credentials', 'true'); // Allow cookies and credentials
+  res.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS'); // Allowed methods
+  res.header('Access-Control-Allow-Headers', 'Origin, Content-Type, Authorization, Accept, X-Requested-With, x-xsrf-token'); // Allowed headers
+  res.header('Content-Type', 'application/json; charset=utf-8'); // Content type header
+  next(); // Continue to the next middleware
+});
+
 // Set the storage for Multer
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
