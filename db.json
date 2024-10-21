@@ -3390,23 +3390,19 @@
     },
     "chartLiabilities": [
         {
-          "item": "Sep",
-          "values": [
-            {
-              "label": "CHECK",
-              "value": 8,
-              "backgroundColor": "#c0c4d6",
-              "borderColor": ""
-            },
-            {
-              "label": "UNCHECK",
-              "value": 531,
-              "backgroundColor": "#01AFF8",
-              "borderColor": ""
-            }
-          ]
+            "item": "Oct",
+            "values": [
+                {
+                    "label": "checked",
+                    "value": 18
+                },
+                {
+                    "label": "nonchecked",
+                    "value": 1320
+                }
+            ]
         }
-      ],
+    ],
       "chartLos": [
         {
           "item": "Sep",
